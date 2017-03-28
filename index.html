@@ -39,443 +39,23 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
         height: 31px;
     }
 </style>
-<script language="javascript" type="text/javascript">
-    function closead()
-    {
-         $("#ShowAD").hide();
-    }
-    
-    var isroll= false;
-    function ShowEditMode()
-    {        
-        //将所有隐藏的层显示出来
-         $("div[id^='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1']:hidden").show();
-         $("#tbBasicInfo").attr("title","点击完善简历基本信息");
-         $("#tbBasicInfo").attr("style","cursor:pointer;");
-         $("#tbBasicInfo").bind("click",function(){
-            location.href='../Rc/PersonBaseInfor.aspx'; 
-         });
-         $("img[id^='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Image']").wrap('<a title="点击上传简历照片" href="../Rc/PersonPhotoUpload.aspx"></a>'); 
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobRequest']").attr("title","点击完善简历求职意向");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobRequest']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobRequest']").bind("click",function(){
-            location.href='../Rc/PersonJobRequest.aspx'; 
-         });
-         if($("#tbqzyx tr[id!='trqzyx']").length==0)
-         {
-             $("#trqzyx td").remove();
-             $("#trqzyx").append("<td colspan='7' align='left' bgcolor='#FFFFFF' class='px12red'>暂无数据，请点击完善求职意向。</td>");
-             if(!isroll)
-             {
-                rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobRequest');
-             }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plEducation']").attr("title","点击完善简历教育情况");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plEducation']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plEducation']").bind("click",function(){
-            location.href='../Rc/PersonEducation.aspx'; 
-         });
-         if($("#tbjyqk span[id!='nodataeducation']").length==0)
-         {
-            $("#nodataeducation").show();
-             if(!isroll)
-             {
-                rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plEducation');
-             }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plWorkExp']").attr("title","点击完善简历工作经历");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plWorkExp']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plWorkExp']").bind("click",function(){
-            location.href='../Rc/PersonWork.aspx'; 
-         });
-         if($.trim($("#tdgzjl").text())=='')
-         {
-            $("#tdgzjl").append("<table width='100%' border='0' cellpadding='3' cellspacing='1' bgcolor='#E0E0E0'><tr><td align='left' bgcolor='#FFFFFF' class='px12red'><span>暂无数据，请点击完善工作经历。</span></td></tr></table>");
-            if(!isroll)
-            {
-                rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plWorkExp');
-            }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience']").attr("title","点击完善简历培训经历");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience']").bind("click",function(){
-            location.href='../Rc/PersonTrain.aspx'; 
-         });
-         if($.trim($("#tdpxjl").text())=='')
-         {
-            $("#tdpxjl").append("<table width='100%' border='0' cellpadding='3' cellspacing='1' bgcolor='#E0E0E0'><tr><td align='left' bgcolor='#FFFFFF' class='px12red'><span>暂无数据，请点击完善培训经历。</span></td></tr></table>");
-            if(!isroll)
-            {
-                rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience');
-            }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Panel1']").attr("title","点击完善简历在校学习工作情况");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Panel1']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Panel1']").bind("click",function(){
-            location.href='../Rc/StudentInSchoolInformation.aspx'; 
-         });
-         
-         var my1 = $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcRewardAndPunishment")[0];
-         if(my1!= null)
-         {
-             my1  = my1.parentNode.parentNode;
-             $(my1).show();
-         }
-         my1 = $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcProdutionInSchool")[0];
-         if(my1!= null)
-         {
-             my1  = my1.parentNode.parentNode;
-             $(my1).show();
-         }
-         my1 = $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcSocialAction")[0];
-         if(my1!= null)
-         {
-             my1  = my1.parentNode.parentNode;
-             $(my1).show();
-         }
-         
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcRewardAndPunishment").text())=='' ||
-            $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcRewardAndPunishment").text())=='无')
-         {
-                $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcRewardAndPunishment").html('<span style="color:Red;">暂无数据，请点击完善奖惩情况。</span>');
-                if(!isroll)
-                {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcRewardAndPunishment');
-                }
-         }
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcProdutionInSchool").text())=='' ||
-           $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcProdutionInSchool").text())=='无' )
-         {
-                $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcProdutionInSchool").html('<span style="color:Red;">暂无数据，请点击完善论文、作品及科研成果。</span>');
-                if(!isroll)
-                {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcProdutionInSchool');
-                }
-         }
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcSocialAction").text())=='' ||
-           $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcSocialAction").text())=='无' )
-         {
-                $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcSocialAction").html('<span style="color:Red;">暂无数据，请点击完善社会工作情况。</span>');
-                if(!isroll)
-                {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcSocialAction');
-                }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification']").attr("title","点击完善简历资格证书");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification']").bind("click",function(){
-            location.href='../Rc/PersonCertificate.aspx'; 
-         });
-         if($("#tbzgzs tr[id!='trzgzs']").length==0)
-         {
-             $("#trzgzs td").remove();
-             $("#trzgzs").append("<td colspan='4' align='left' bgcolor='#FFFFFF' class='px12red'>暂无数据，请点击完善资格证书。</td>");
-             if(!isroll)
-             {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification');
-             }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage']").attr("title","点击完善简历外语水平");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage']").bind("click",function(){
-            location.href='../Rc/PersonLanguage.aspx'; 
-         });
-         if($("#tbwysp span[id!='nodatalanguage']").length==0)
-         {
-            $("#nodatalanguage").show();
-             if(!isroll)
-             {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage');
-             }
-         }
-        
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage']").attr("title","点击完善简历方言水平");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage']").bind("click",function(){
-            location.href='../Rc/PersonLanguage.aspx'; 
-         });
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillMotherLanguage").text())=='' || 
-           $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillMotherLanguage").text()).indexOf('无')==0)
-         {
-                $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillMotherLanguage").html('<span style="color:Red;">暂无数据，请点击完善方言水平。</span>');
-                if(!isroll)
-                {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage');
-                }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill']").attr("title","点击完善简历计算机技能");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill']").bind("click",function(){
-            location.href='../Rc/PersonComputer.aspx'; 
-         });
-         if($("#tbjsjjn span[id!='nodatacomputerskill']").length==0)
-         {
-            $("#nodatacomputerskill").show();
-            if(!isroll)
-            {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill');
-            }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary']").attr("title","点击完善简历计算机总体水平");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary']").bind("click",function(){
-            location.href='../Rc/PersonComputer.aspx'; 
-         });
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillComputerNote").text())=='' || 
-           $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillComputerNote").text())=='无')
-         {
-                $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillComputerNote").html('<span style="color:Red;">暂无数据，请点击完善计算机总体水平。</span>');
-                if(!isroll)
-                {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary');
-                }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver']").attr("title","点击完善简历其他技能");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver']").bind("click",function(){
-            location.href='../Rc/PersonSkill.aspx'; 
-         });
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillDriver").text())=='' && $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillOther").text())=='')
-         {
-            $("#tdqtjn").html('<span bgcolor="#FFFFFF" class="px12red">暂无数据，请点击完善其他技能。</span>');
-            if(!isroll)
-            {
-                 rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver');
-            }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase']").attr("title","点击完善简历特长及自我评价");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase']").bind("click",function(){
-            location.href='../Rc/StudentInSchoolInformation.aspx'; 
-         });
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lblSelfCase").text())=='' || 
-           $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lblSelfCase").text())=='无')
-         {
-                $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lblSelfCase").html('<span style="color:Red;">暂无数据，请点击完善特长及自我评价。</span>');
-                if(!isroll)
-                {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase');
-                }
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter']").attr("title","点击完善简历求职信");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter']").attr("style","cursor:pointer;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter']").bind("click",function(){
-            location.href='../Rc/PersonJobRequestLetter.aspx'; 
-         });
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_JobLetter").text())=='' || 
-           $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_JobLetter").text())=='无')
-         {
-                $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_JobLetter").html('<span style="color:Red;">暂无数据，请点击完善求职信。</span>');
-                if(!isroll)
-                {
-                    rollsit('ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter');
-                }
-         }
-         
-         //将点击事件取消
-         $("#imgResumeForeditmode").attr("src","../Rc/images/resume/banner160_198_preview.png");
-         $("#imgResumeForeditmode").attr("title","请点击，隐藏简历中未填写项目及企业浏览模式");
-         $("#ashoweditmode").attr("onclick","ShowBrowserMode()");
-    }
-    
-    function rollsit(name)
-    {
-        var name = "#"+ name;
-        if($(name).length>0)
-        {
-            $('html, body').animate({
-                        scrollTop: ($(name).offset().top -110)
-            }, 1000);
-            isroll= true;
-        }
-    }
-    
-    function ShowBrowserMode()
-    {
-         isroll= false;
-         $('html, body').animate({
-                        scrollTop: 0
-         }, 1000);            
-         $("#tbBasicInfo").removeAttr("title");
-         $("#tbBasicInfo").attr("style","cursor:default;");
-         $("#tbBasicInfo").unbind("click");
-         $("img[id^='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Image']").wrap('<a title="点击上传简历照片" href="../Rc/PersonPhotoUpload.aspx"></a>'); 
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobRequest']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobRequest']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobRequest']").unbind("click");
-         if($("#tbqzyx tr[id!='trqzyx']").length==0)
-         {
-             $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobRequest").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plEducation']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plEducation']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plEducation']").unbind("click");
-         if($("#tbjyqk span[id!='nodataeducation']").length==0)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plEducation").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plWorkExp']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plWorkExp']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plWorkExp']").unbind("click");
-         if($.trim($("#tdgzjl").text()).indexOf('暂无数据')!=-1)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plWorkExp").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience']").unbind("click");
-         if($.trim($("#tdpxjl").text()).indexOf('暂无数据')!=-1)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Panel1']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Panel1']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Panel1']").unbind("click");
-         var count = 0;
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcRewardAndPunishment").text()).indexOf('暂无数据')!=-1)
-         {
-              var my1 = $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcRewardAndPunishment")[0];
-              my1  = my1.parentNode.parentNode;
-              $(my1).hide();
-              count++;
-         }
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcProdutionInSchool").text()).indexOf('暂无数据')!=-1)
-         {
-              var my2 = $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcProdutionInSchool")[0];
-              my2  = my2.parentNode.parentNode;
-              $(my2).hide();
-              count++;
-         }
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcSocialAction").text()).indexOf('暂无数据')!=-1)
-         {
-              var my3 = $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcSocialAction")[0];
-              my3  = my3.parentNode.parentNode;
-              $(my3).hide();
-              count++;
-         }
-         if(count==3){$("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Panel1").hide(); }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification']").unbind("click");
-         if($("#tbzgzs tr[id!='trzgzs']").length==0)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage']").unbind("click");
-         if($("#tbwysp span[id!='nodatalanguage']").length==0)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage").hide();
-         }
-        
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage']").unbind("click");
-         
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillMotherLanguage").text()).indexOf('暂无数据')!=-1)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill']").unbind("click");
-         if($("#tbjsjjn span[id!='nodatacomputerskill']").length==0)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary']").unbind("click");
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillComputerNote").text()).indexOf('暂无数据')!=-1)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver']").unbind("click");
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillDriver").text())=='' && $.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillOther").text())=='')
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase']").unbind("click");
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lblSelfCase").text()).indexOf('暂无数据')!=-1)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase").hide();
-         }
-         
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter']").removeAttr("title");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter']").attr("style","cursor:default;");
-         $("div[id='ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter']").unbind("click");
-         if($.trim($("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_JobLetter").text()).indexOf('暂无数据')!=-1)
-         {
-            $("#ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter").hide();
-         }
-         $("#imgResumeForeditmode").attr("src","../Rc/images/resume/banner160_198_complete.png");
-         $("#imgResumeForeditmode").attr("title","请点击，显示简历中未填写项目及简历编辑模式");
-         $("#ashoweditmode").attr("onclick","ShowEditMode()");
-    }
-</script>
 
-<div id="ShowAD" style="position: absolute; top: -101px; left: 1310px;">
-    <div class="adright">
-        <font onclick="closead();" style="cursor: pointer">关闭</font> <a id="ashoweditmode" style="cursor: pointer" onclick="ShowEditMode();" title="请点击，显示简历中未填写项目及简历编辑模式">
-            <img src="../Rc/images/resume/banner160_198_complete.png" id="imgResumeForeditmode" style="width: 160px; height: 198px;"></a>
-    </div>
-</div>
-<table width="970" border="0" cellpadding="0" cellspacing="0">
-    <tbody>
-        <tr>
-            <td>
-                
-                <img src="../Rc/images/resume/title_resume.gif" width="970" height="36">
-                
-            </td>
-        </tr>
-    </tbody>
-</table>
-<table width="970" border="0" cellpadding="5" cellspacing="1" bgcolor="#EBF3FC" class="px12">
+
+<table width="97%" border="0" cellpadding="5" cellspacing="1" bgcolor="#EBF3FC" class="px12">
     <tbody>
         <tr>
             
             <td align="left" bgcolor="#A8BADB">
             
-                登记时间：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lblCreateDateTime">2008/9/21</span> ｜ 最后更新时间：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbllastUpdateTime">2017/3/28</span>
             </td>
             
             <td align="right" bgcolor="#A8BADB">
-            <a id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_hl_DownloadWordResume" href="/RcNew/Rc/CreatePersonWordResumeNoAudit.aspx?RcGuid=386f0293-e49f-46c4-a39c-b94736c558e4">[下载Word简历] </a>&nbsp;&nbsp;
-                <a id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_hl_DownloadPDFResume" href="/RcNew/Rc/CreatePersonPDFResumeNoAudit.aspx?RcGuid=386f0293-e49f-46c4-a39c-b94736c558e4">[下载PDF简历]</a>
+            <a id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_hl_DownloadWordResume" href="javascript:window.print()">[打印简历] </a>&nbsp;&nbsp;
             </td>
         </tr>
     </tbody>
 </table>
-<table width="970" border="0" cellpadding="0" cellspacing="0">
+<table width="97%" border="0" cellpadding="0" cellspacing="0">
     <tbody>
         <tr>
             <td height="3">
@@ -492,7 +72,7 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                         <tr>
                             
                             <td align="center" bgcolor="#E1EDFB">
-                                <img id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Image1" class="pic2w" src="/RcNew/FileUpload/Rc/Photo/2010/12/12/535096/%e8%b0%ad%e5%ae%81.jpg" style="height:148px;width:111px;border-width:0px;">
+                                <img id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Image1" class="pic2w" src="avatar.jpg" style="height:148px;width:111px;border-width:0px;">
                                 <br>
                             </td>
                             
@@ -508,14 +88,12 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                             <td align="left" bgcolor="#E9F5FC" class="px12">
                             
                                 <span class="px12bold">
-                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rcName">谭先生</span>(<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rcSex">男</span>)</span>
+                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rcName">谭宁</span>(<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rcSex">男</span>)</span>
                                 <span class="STYLE_gold">
                                     <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_jobsInformation"></span></span>&nbsp;
-                                <span class="green">
-                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcJobStatus">我目前在职，正考虑换个新环境。（如有合适的工作机会，能尽快到岗）</span></span>
                                 <br>
-                                <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcBorn">1985-11-08</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcHyzk">未婚</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcZzmm">无党派</span> | 籍贯：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcJg">四川</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcBodyLength">160cm</span> | 视力：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcEye">近视</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcIdentity">513723************</span><br>
-                                <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_rcYx">西昌学院</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_rcZy">烟草</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_HighXl">大专</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lblRczc">无职称</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lblRcWorkYear">9年工作经验</span> | 目前所在地：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcNowAddress">福州仓山区</span>
+                                <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcBorn">1985-11-08</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcHyzk">未婚</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcZzmm">无党派</span> | 籍贯：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcJg">四川</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcBodyLength">165cm</span> | 视力：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcEye">近视</span> | <br>
+                                <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_rcYx">西昌学院</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_rcZy">烟草</span> | <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_HighXl">大专</span> | 目前所在地：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcNowAddress">福州仓山区</span>
                             </td>
                         </tr>
                     </tbody>
@@ -548,7 +126,7 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                             </td>
                             
                             <td align="left" bgcolor="#E9F5FC" class="px12">
-                            <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcOnlineLink">1464168942</span>
+                            <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcOnlineLink">1464168942/15060198392</span>
                             </td>
                         </tr>
                         <tr>
@@ -559,7 +137,7 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                             </td>
                             
                             <td colspan="3" align="left" bgcolor="#E9F5FC" class="px12">
-                            <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcPersonAddress">福州市仓山区建新镇</span>
+                            <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcPersonAddress">福州市仓山区盖山镇</span>
                             </td>
                             
                             <td align="left" bgcolor="#E1EDFB" class="px12bold">
@@ -617,41 +195,16 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                             <td align="center" bgcolor="#EFEFEF" class="style3" style="white-space: nowrap;">
                                 提供住宿
                             </td>
-                            <td width="18%" align="center" bgcolor="#EFEFEF" class="style3" style="white-space: nowrap;">
-                                其他要求
-                            </td>
                         </tr>
                         
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl00_lbl_JobName" style="font-weight:normal;">UI设计/网页设计与制作</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl00_lbl_JobHy" title="计算机业(软件、数据库、系统集成)" style="font-weight:normal;white-space:nowrap;">计算机业(软件、数据...</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl00_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl00_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl00_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl00_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl00_lbl_JobOtherRequest">无</span>
-                                    </td>
-                                </tr>
+
                             
                                 <tr>
                                     <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl01_lbl_JobName" style="font-weight:normal;">电脑美工</span>
+                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl01_lbl_JobName" style="font-weight:normal;">php程序员</span>
                                     </td>
                                     <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl01_lbl_JobHy" style="font-weight:normal;">互联网、电子商务</span>
+                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl01_lbl_JobHy" style="font-weight:normal;">互联网</span>
                                     </td>
                                     <td align="left" bgcolor="#FFFFFF" class="px12">
                                         <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl01_lbl_JobSalary">薪资面议</span>
@@ -665,226 +218,10 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                                     <td align="left" bgcolor="#FFFFFF" class="px12" title="">
                                         <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl01_lbl_JobHouse">否</span>
                                     </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl01_lbl_JobOtherRequest">无</span>
-                                    </td>
                                 </tr>
                             
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl02_lbl_JobName" style="font-weight:normal;">其它相关职位</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl02_lbl_JobHy" style="font-weight:normal;">互联网、电子商务</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl02_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl02_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl02_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl02_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl02_lbl_JobOtherRequest">php程序员</span>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl03_lbl_JobName" style="font-weight:normal;">软件设计师</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl03_lbl_JobHy" style="font-weight:normal;">互联网、电子商务</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl03_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl03_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl03_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl03_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl03_lbl_JobOtherRequest">Zencart程序员，美工</span>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl04_lbl_JobName" style="font-weight:normal;">INTERNET/WEB/电子商务师</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl04_lbl_JobHy" style="font-weight:normal;">互联网、电子商务</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl04_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl04_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl04_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl04_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl04_lbl_JobOtherRequest">无</span>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl05_lbl_JobName" style="font-weight:normal;">网络工程师</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl05_lbl_JobHy" style="font-weight:normal;">互联网、电子商务</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl05_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl05_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl05_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl05_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl05_lbl_JobOtherRequest">无</span>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl06_lbl_JobName" style="font-weight:normal;">网站编辑员</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl06_lbl_JobHy" style="font-weight:normal;">互联网、电子商务</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl06_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl06_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl06_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl06_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl06_lbl_JobOtherRequest">无</span>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl07_lbl_JobName" style="font-weight:normal;">互联网软件开发工程师</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl07_lbl_JobHy" style="font-weight:normal;">互联网、电子商务</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl07_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl07_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl07_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl07_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl07_lbl_JobOtherRequest">无</span>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl08_lbl_JobName" style="font-weight:normal;">系统/网络管理员</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl08_lbl_JobHy" style="font-weight:normal;">互联网、电子商务</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl08_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl08_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl08_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl08_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl08_lbl_JobOtherRequest">无</span>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl09_lbl_JobName" style="font-weight:normal;">其它相关职位</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl09_lbl_JobHy" title="计算机业(软件、数据库、系统集成)" style="font-weight:normal;white-space:nowrap;">计算机业(软件、数据...</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl09_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl09_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl09_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl09_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl09_lbl_JobOtherRequest">无</span>
-                                    </td>
-                                </tr>
-                            
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl10_lbl_JobName" style="font-weight:normal;">INTERNET/WEB/电子商务师</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl10_lbl_JobHy" title="计算机业(软件、数据库、系统集成)" style="font-weight:normal;white-space:nowrap;">计算机业(软件、数据...</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl10_lbl_JobSalary">薪资面议</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl10_lbl_JobXz">全职</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl10_lbl_JobAddress" style="font-weight:normal;">福州</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl10_lbl_JobHouse">否</span>
-                                    </td>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12" title="">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpjobRequest_ctl10_lbl_JobOtherRequest">无</span>
-                                    </td>
-                                </tr>
+
+
                             
                     </tbody>
                 </table>
@@ -960,7 +297,33 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                 <span class="px16whitebold">工作经历</span>
             </td>
             <td valign="top" id="tdgzjl">
-                
+
+				
+                        <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
+                            <tbody>
+                                <tr>
+                                    <td align="left" bgcolor="#EFEFEF" class="px12bold">
+                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_BeginDateTime">2015年01月</span>-<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_EndDateTime">2017年</span>
+                                        ｜
+                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_CompanyName" style="font-weight:bold;">厦门新云天软件</span>
+                                        ｜
+                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_JobName">网站开发</span>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left" bgcolor="#FFFFFF" class="px12">
+                                        工作职责：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_JobNote">网站开发，程序开发，网站维护</span>
+                                        <br>
+                                        所在部门：
+                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_DepartmentName">技术研发</span>
+                                        <br>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
                         <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
                             <tbody>
                                 <tr>
@@ -970,18 +333,23 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                                         <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_CompanyName" style="font-weight:bold;">卓信数码</span>
                                         ｜
                                         <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_JobName">网站开发</span>
+
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        薪资水平：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_MonthSalary">保密</span>/月
-                                        <br>
                                         工作职责：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_JobNote">网站开发，程序开发，网站维护</span>
                                         <br>
                                         所在部门：
                                         <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl00_lbl_DepartmentName">技术研发</span>
                                         <br>
-                                        
+                                        <span>
+										网站演示：<a href="http://jiaxiao.jiakao.com">jiaxiao.jiakao.com</a>&nbsp;&nbsp;&nbsp;
+													<a href="http://www1.jiakao.com">www1.jiakao.com</a>&nbsp;&nbsp;&nbsp;
+													<a href="http://news.jiakao.com">news.jiakao.com</a>&nbsp;&nbsp;&nbsp;
+													<a href="http://k.jiakao.com">k.jiakao.com</a>&nbsp;&nbsp;&nbsp;
+										</span>
+
                                     </td>
                                 </tr>
                             </tbody>
@@ -1000,7 +368,6 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                                 </tr>
                                 <tr>
                                     <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        薪资水平：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl01_lbl_MonthSalary">保密</span>/月
                                         <br>
                                         工作职责：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl01_lbl_JobNote">网站开发，网站维护。二次开发。</span>
                                         <br>
@@ -1026,8 +393,6 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                                 </tr>
                                 <tr>
                                     <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        薪资水平：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl02_lbl_MonthSalary">保密</span>/月
-                                        <br>
                                         工作职责：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl02_lbl_JobNote">建站，二次开发</span>
                                         <br>
                                         所在部门：
@@ -1052,9 +417,7 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                                 </tr>
                                 <tr>
                                     <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        薪资水平：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl03_lbl_MonthSalary">3000</span>/月
-                                        <br>
-                                        工作职责：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl03_lbl_JobNote">zencart建站,维护。</span>
+                                        工作职责：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl03_lbl_JobNote">网站开发,维护。</span>
                                         <br>
                                         所在部门：
                                         <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl03_lbl_DepartmentName">技术研发部</span>
@@ -1065,57 +428,6 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
                             </tbody>
                         </table>
                     
-                        <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
-                            <tbody>
-                                <tr>
-                                    <td align="left" bgcolor="#EFEFEF" class="px12bold">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl04_lbl_BeginDateTime">2009年03月</span>-<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl04_lbl_EndDateTime">2011年01月</span>
-                                        ｜
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl04_lbl_CompanyName" style="font-weight:bold;">恒利装饰</span>
-                                        ｜
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl04_lbl_JobName">0</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        薪资水平：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl04_lbl_MonthSalary">保密</span>/月
-                                        <br>
-                                        工作职责：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl04_lbl_JobNote">无</span>
-                                        <br>
-                                        所在部门：
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl04_lbl_DepartmentName">0</span>
-                                        <br>
-                                        
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    
-                        <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
-                            <tbody>
-                                <tr>
-                                    <td align="left" bgcolor="#EFEFEF" class="px12bold">
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl05_lbl_BeginDateTime">2008年10月</span>-<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl05_lbl_EndDateTime">2009年01月</span>
-                                        ｜
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl05_lbl_CompanyName" style="font-weight:bold;">英索机电设备公司</span>
-                                        ｜
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl05_lbl_JobName">车工</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td align="left" bgcolor="#FFFFFF" class="px12">
-                                        薪资水平：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl05_lbl_MonthSalary">保密</span>/月
-                                        <br>
-                                        工作职责：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl05_lbl_JobNote">机械加工</span>
-                                        <br>
-                                        所在部门：
-                                        <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpWorkExp_ctl05_lbl_DepartmentName">机械加工</span>
-                                        <br>
-                                        
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
                     
             </td>
         </tr>
@@ -1131,50 +443,7 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
 </table>
 
 </div>
-<div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_Panel1" style="display:none;">
-	
-    <table width="97%" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr>
-                
-                <td width="111" align="center" valign="middle" bgcolor="#A8BADB">
-                
-                    <span class="px16whitebold">在校学习工作情况</span>
-                </td>
-                <td valign="top">
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
-                        <tbody>
-                            <tr>
-                                <td width="25%" align="left" bgcolor="#FFFFFF" class="px12">
-                                    奖惩情况：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcRewardAndPunishment"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="25%" align="left" bgcolor="#FFFFFF" class="px12">
-                                    论文、作品及科研成果：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcProdutionInSchool"></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width="25%" align="left" bgcolor="#FFFFFF" class="px12">
-                                    社会工作情况：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_RcSocialAction"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table width="943" border="0" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td height="5">
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
-</div>
 <div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plPxExperience">
 	
 <table width="97%" border="0" cellpadding="0" cellspacing="0">
@@ -1203,7 +472,6 @@ body {margin-left: 0px;margin-top: 0px;margin-right: 0px;margin-bottom: 0px;font
 php+mysql
 photoshop
 flash</span><br>
-                                            培训效果：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpPxExperience_ctl00_lbl_PxXiaoGuo"></span>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -1223,197 +491,10 @@ flash</span><br>
 </table>
 
 </div>
-<div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plCertification" style="display:none;">
-	
-<table width="97%" border="0" cellpadding="0" cellspacing="0">
-    <tbody>
-        <tr>
-            
-                <td width="111" align="center" valign="middle" bgcolor="#A8BADB">
-                
-                <span class="px16whitebold">资格证书</span>
-            </td>
-            <td valign="top">
-                <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0" id="tbzgzs">
-                    <tbody>
-                        <tr id="trzgzs">
-                            <td width="13%" align="center" bgcolor="#EFEFEF" class="px12bold">
-                                时间
-                            </td>
-                            <td width="28%" align="center" bgcolor="#EFEFEF" class="px12bold">
-                                名称
-                            </td>
-                            <td align="center" bgcolor="#EFEFEF" class="px12bold">
-                                发证机关
-                            </td>
-                            <td width="18%" align="center" bgcolor="#EFEFEF" class="px12bold">
-                                证书号
-                            </td>
-                        </tr>
-                        
-                    </tbody>
-                </table>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<table width="97%" border="0" cellspacing="0" cellpadding="0">
-    <tbody>
-        <tr>
-            <td height="5">
-            </td>
-        </tr>
-    </tbody>
-</table>
 
-</div>
-<div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plLanguage">
-	
-    <table width="97%" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr>
-                
-                <td width="111" align="center" valign="middle" bgcolor="#A8BADB">
-                
-                    <span class="px16whitebold">外语水平</span>
-                </td>
-                <td valign="top">
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0" id="tbwysp">
-                        <tbody>
-                            <tr>
-                                <td align="left" bgcolor="#FFFFFF" class="px12">
-                                    
-                                            语种：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpLanguage_ctl00_Label1">英语</span>
-                                            | 听力：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpLanguage_ctl00_Label2">良好</span>
-                                            | 口语：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpLanguage_ctl00_Label3">一般</span>
-                                            | 写作：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpLanguage_ctl00_Label5">无</span>
-                                            | 等级或证书：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpLanguage_ctl00_Label4">无</span>
-                                            <br>
-                                        
-                                    <span id="nodatalanguage" style="display:none; color:Red;">暂无数据，请点击完善外语水平。</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table width="97%" border="0" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td height="5">
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
-</div>
-<div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillMotherLanguage">
-	
-    <table width="97%" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr>
-                
-                <td width="111" align="center" valign="middle" bgcolor="#A8BADB">
-                
-                    <span class="px16whitebold">方言水平</span>
-                </td>
-                <td valign="top">
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
-                        <tbody>
-                            <tr>
-                                <td width="25%" align="left" bgcolor="#FFFFFF" class="px12">
-                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillMotherLanguage">四川</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table width="97%" border="0" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td height="5">
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
-</div>
-<div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSkill">
-	
-    <table width="97%" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr>
-                
-                <td width="111" align="center" valign="middle" bgcolor="#A8BADB">
-                
-                    <span class="px16whitebold">计算机技能</span>
-                </td>
-                <td valign="top">
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0" id="tbjsjjn">
-                        <tbody>
-                            <tr>
-                                <td align="left" bgcolor="#FFFFFF" class="px12">
-                                    
-                                            类别：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl00_Label1">办公OA</span>
-                                            | 名称：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl00_Label2">woed  excul</span>
-                                            | 使用时间（月）：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl00_Label3">36</span>
-                                            | 熟练程度：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl00_Label4">熟练</span>
-                                            <br>
-                                        
-                                            类别：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl01_Label1">编程能力</span>
-                                            | 名称：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl01_Label2">php,javascript,jquery,html,css</span>
-                                            | 使用时间（月）：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl01_Label3">18</span>
-                                            | 熟练程度：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl01_Label4">熟练</span>
-                                            <br>
-                                        
-                                            类别：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl02_Label1">平面制作</span>
-                                            | 名称：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl02_Label2">photoshop</span>
-                                            | 使用时间（月）：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl02_Label3">18</span>
-                                            | 熟练程度：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl02_Label4">熟练</span>
-                                            <br>
-                                        
-                                            类别：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl03_Label1">数据库</span>
-                                            | 名称：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl03_Label2">Mysql,Oracle</span>
-                                            | 使用时间（月）：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl03_Label3">18</span>
-                                            | 熟练程度：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl03_Label4">熟练</span>
-                                            <br>
-                                        
-                                            类别：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl04_Label1">动画制作</span>
-                                            | 名称：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl04_Label2">flash</span>
-                                            | 使用时间（月）：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl04_Label3">18</span>
-                                            | 熟练程度：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl04_Label4">一般</span>
-                                            <br>
-                                        
-                                            类别：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl05_Label1">编程能力</span>
-                                            | 名称：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl05_Label2">dreamweaver</span>
-                                            | 使用时间（月）：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl05_Label3">18</span>
-                                            | 熟练程度：<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_rpComputerSkill_ctl05_Label4">熟练</span>
-                                            <br>
-                                        
-                                    <span id="nodatacomputerskill" style="display:none; color:Red;">暂无数据，请点击完善计算机技能。</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table width="97%" border="0" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td height="5">
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
-</div>
 <div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plComputerSummary">
 	
     <table width="97%" border="0" cellpadding="0" cellspacing="0">
@@ -1429,11 +510,13 @@ flash</span><br>
                         <tbody>
                             <tr>
                                 <td width="25%" align="left" bgcolor="#FFFFFF" class="px12">
-                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillComputerNote">1、精通PHP OOP编程，熟悉PHP开源框架；
-2、熟悉HTML、XHTML、JavaScript、Jquery、Ajax等设计开发技术；
-3、熟练应用MySQL、Oracle数据库进行应用开发，精通SQL语言，熟悉SQL语句调优和数据库调优；
-4、熟练使用CVS，SVN等版本控制工具；
-5、具备一定SEO经验；</span>
+                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillComputerNote">
+									1、精通PHP OOP编程，熟悉PHP开源框架,如Thinkphp；<br>
+2、熟悉HTML、CSS、JavaScript、Jquery等网页前端技术；<br>
+3、熟练应用MySQL、Oracle数据库进行应用开发，精通SQL语言，熟悉SQL语句调优和数据库调优；<br>
+4、熟练使用CVS，SVN等版本控制工具；<br>
+5、熟悉linux系统操作；
+6、具备一定SEO经验；<br></span>
                                 </td>
                             </tr>
                         </tbody>
@@ -1452,108 +535,7 @@ flash</span><br>
     </table>
 
 </div>
-<div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSkillDriver">
-	
-    <table width="97%" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr>
-                
-                <td width="111" align="center" valign="middle" bgcolor="#A8BADB">
-                
-                    <span class="px16whitebold">其他技能</span>
-                </td>
-                <td valign="top">
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
-                        <tbody>
-                            <tr>
-                                <td width="25%" align="left" bgcolor="#FFFFFF" class="px12" id="tdqtjn">
-                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillDriver">持有无证</span>/<span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_SkillOther" style="display:none;"></span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table width="97%" border="0" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td height="5">
-                </td>
-            </tr>
-        </tbody>
-    </table>
 
-</div>
-<div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plSelfCase">
-	
-    <table width="97%" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr>
-                
-                <td width="111" align="center" valign="middle" bgcolor="#A8BADB">
-                    
-                    <span class="px14whitebold">特长及自我评价 </span>
-                </td>
-                <td valign="top">
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
-                        <tbody>
-                            <tr>
-                                <td width="25%" align="left" bgcolor="#FFFFFF" class="px12">
-                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lblSelfCase">无</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table width="97%" border="0" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td height="5">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-</div>
-<div id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_plJobLetter">
-	
-    <table width="97%" border="0" cellpadding="0" cellspacing="0">
-        <tbody>
-            <tr>
-                
-                <td width="111" align="center" valign="middle" bgcolor="#A8BADB">
-                    
-                    <span class="px16whitebold">求职信 </span>
-                </td>
-                <td valign="top">
-                    <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#E0E0E0">
-                        <tbody>
-                            <tr>
-                                <td width="25%" align="left" bgcolor="#FFFFFF" class="px12">
-                                    <span id="ctl00_ContentPlaceHolder1_UC_PersonResumeDetailBefore1_lbl_JobLetter">示例站点：<br>www.tan-ning.net</span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table width="97%" border="0" cellspacing="0" cellpadding="0">
-        <tbody>
-            <tr>
-                <td height="5">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-</div>
 
             </td>
         </tr>
